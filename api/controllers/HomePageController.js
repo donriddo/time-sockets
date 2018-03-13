@@ -33,7 +33,7 @@ module.exports = {
         Math.round(Date.now() - req.session.store.time) / 60000
       ) < 5 && req.session.store.count >= 10
     ) {
-      return sails.sockets.broadcast(
+      sails.sockets.broadcast(
         socketID,
         'error',
         {
@@ -42,7 +42,8 @@ module.exports = {
           ),
           count: req.session.store.count
         }
-      )
+      );
+      return res.forbidden();
 
     } else if (
       parseInt(
