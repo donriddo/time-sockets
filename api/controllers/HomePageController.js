@@ -9,7 +9,7 @@ module.exports = {
 
 
   /**
-  * @api {get} /?date=now Retrieve Server Time
+  * @api {get} /time?date=now Retrieve Server Time (over socketIO)
   * @apiName Retrieve Server Time
   * @apiGroup HomePage
   * @apiVersion 0.0.1
