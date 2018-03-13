@@ -22,13 +22,9 @@ module.exports = {
 
     let socketID = sails.sockets.getId(req);
 
-    console.log('Before: ', req.session.store);
+    console.log('Before: ', req.session.store, req.sid);
 
-    if (
-      !req.session.store || parseInt(
-        Math.round(Date.now() - req.session.store.time) / 60000
-      ) > 5
-    ) {
+    if (!req.session.store) {
       req.session.store = {
         time: Date.now(), count: 1
       };
@@ -48,6 +44,14 @@ module.exports = {
         }
       )
 
+    } else if (
+      parseInt(
+        Math.round(Date.now() - req.session.store.time) / 60000
+      ) > 5
+    ) {
+      req.session.store = {
+        time: Date.now(), count: 1
+      };
     } else {
       req.session.store.count = req.session.store.count + 1;
     }
