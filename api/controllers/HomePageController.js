@@ -1,7 +1,7 @@
 /**
- * TerritoryController
+ * HomePageController
  *
- * @description :: Server-side logic for managing territories
+ * @description :: Server-side logic for managing homepage
  * @help        :: See http://sailsjs.org/#!/documentation/concepts/Controllers
  */
 
